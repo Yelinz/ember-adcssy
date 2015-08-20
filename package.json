@@ -1,0 +1,30 @@
+{
+  "name": "ember-adcssy",
+  "version": "1.0.0",
+  "description": "Ember addon for adcssy",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/adfinis-sygroup/ember-adcssy"
+  },
+  "engines": {
+    "node": ">= 0.10.0"
+  },
+  "author": {
+    "name": "Damian Senn",
+    "email": "damian.senn@adfinis-sygroup.ch"
+  },
+  "keywords": [
+    "ember-addon",
+    "css",
+    "adfinis",
+    "sygroup",
+    "framework"
+  ],
+  "homepage": "https://github.com/adfinis-sygroup/ember-adcssy",
+  "devDependencies": {
+    "broccoli-funnel": "^0.2.8",
+    "broccoli-merge-trees": "^0.2.3",
+    "font-awesome": "FortAwesome/Font-Awesome#v4.4.0"
+  }
+}
