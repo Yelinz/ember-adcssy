@@ -1,4 +1,4 @@
-/* global module, require */
+/* global module, require, __dirname */
 
 var funnel     = require('broccoli-funnel')
 var mergeTrees = require('broccoli-merge-trees')
@@ -21,7 +21,7 @@ module.exports = {
       destDir: '/'
     })
 
-    var fontAwesome = funnel('node_modules/font-awesome/fonts', {
+    var fontAwesome = funnel(__dirname + '/node_modules/font-awesome/fonts', {
       destDir: '/fonts'
     })
 
