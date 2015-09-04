@@ -25,12 +25,18 @@ module.exports = {
       destDir: '/fonts'
     })
 
+    var adcssySourcemap = funnel(this.app.bowerDirectory + '/adcssy/build/css', {
+      destDir: '/assets',
+      include: [ 'adcssy.css.map' ]
+    })
+
     if (inputTree) {
       trees.push(inputTree)
     }
 
     trees.push(adcssyAssets)
     trees.push(fontAwesome)
+    trees.push(adcssySourcemap)
 
     return mergeTrees(trees)
   }
