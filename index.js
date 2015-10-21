@@ -9,6 +9,7 @@ module.exports = {
     this._super.included(app)
     this.app = app
 
+    app.import('vendor/ember-adcssy/register-version.js')
     app.import(app.bowerDirectory + '/adcssy/build/css/adcssy.css')
   },
 
