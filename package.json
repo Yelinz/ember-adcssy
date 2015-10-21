@@ -1,6 +1,6 @@
 {
   "name": "ember-adcssy",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Ember addon for adcssy",
   "main": "index.js",
   "repository": {
@@ -25,6 +25,6 @@
   "dependencies": {
     "broccoli-funnel": "^0.2.8",
     "broccoli-merge-trees": "^0.2.3",
-    "font-awesome": "FortAwesome/Font-Awesome#v4.4.0"
+    "font-awesome": "^4.4.0"
   }
 }
