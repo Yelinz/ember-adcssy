@@ -21,7 +21,7 @@ module.exports = {
       destDir: '/'
     })
 
-    var fontAwesome = funnel(__dirname + '/node_modules/font-awesome/fonts', {
+    var fontAwesome = funnel('node_modules/font-awesome/fonts', {
       destDir: '/fonts'
     })
 
