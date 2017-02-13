@@ -1,1 +1,1 @@
-Ember.libraries.register('Ember AdCSSy', '1.1.2');
+Ember.libraries.register('Ember AdCSSy', '1.1.3');
