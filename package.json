@@ -24,7 +24,6 @@
   "homepage": "https://github.com/adfinis-sygroup/ember-adcssy",
   "dependencies": {
     "broccoli-funnel": "^0.2.8",
-    "broccoli-merge-trees": "^0.2.3",
-    "font-awesome": "^4.7.0"
+    "broccoli-merge-trees": "^0.2.3"
   }
 }

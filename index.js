@@ -22,7 +22,7 @@ module.exports = {
       destDir: '/'
     })
 
-    var fontAwesome = funnel('node_modules/font-awesome/fonts', {
+    var fontAwesome = funnel(this.app.bowerDirectory + '/font-awesome/fonts', {
       destDir: '/fonts'
     })
 
