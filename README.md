@@ -3,5 +3,7 @@
 ## Installation
 
 ```bash
-ember install adfinis-sygroup/ember-adcssy
+ember install ember-adcssy
 ```
+
+Then simply add `@import 'adcssy.css';` to `/app/styles/app.css`.

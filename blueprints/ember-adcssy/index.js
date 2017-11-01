@@ -1,12 +1,15 @@
 /* global module */
 
 module.exports = {
+  normalizeEntityName() {},
+
   afterInstall() {
-    this.addAddonToProject('ember-cli-postcss')
-    this.addPackagesToProject([
-      { name: 'postcss-import' },
-      { name: 'postcss-cssnext' },
-      { name: 'postcss-responsive-type' }
-    ])
+    return this.addAddonToProject('ember-cli-postcss').then(() => {
+      return this.addPackagesToProject([
+        { name: 'postcss-import' },
+        { name: 'postcss-cssnext' },
+        { name: 'postcss-responsive-type' }
+      ])
+    })
   }
 }
