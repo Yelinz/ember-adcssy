@@ -20,11 +20,6 @@
     "adcssy": "^0.10.0",
     "broccoli-funnel": "^0.2.8",
     "broccoli-merge-trees": "^0.2.3",
-    "broccoli-postcss-single": "^1.4.1",
-    "ember-cli-postcss": "^3.5.2",
-    "font-awesome": "^4.7.0",
-    "postcss-cssnext": "^3.0.2",
-    "postcss-import": "^11.0.0",
-    "postcss-responsive-type": "^1.0.0"
+    "ember-cli-postcss": "^3.5.2"
   }
 }
