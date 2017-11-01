@@ -1,44 +1,69 @@
-/* global module, require, __dirname */
+/* global module, require */
 
-var funnel     = require('broccoli-funnel')
-var mergeTrees = require('broccoli-merge-trees')
+const Funnel = require('broccoli-funnel')
+const Merge = require('broccoli-merge-trees')
+
+const fs = require('fs')
+const path = require('path')
+
+const faPath = path.dirname(require.resolve('font-awesome/package.json'))
+const adcssyPath = path.dirname(require.resolve('adcssy/package.json'))
+
+const DEFAULT_POSTCSS_OPTIONS = {
+  filter: { enable: false },
+  compile: {
+    enable: true,
+    plugins: [
+      { module: require('postcss-import') },
+      { module: require('postcss-cssnext') },
+      { module: require('postcss-responsive-type') }
+    ]
+  }
+}
 
 module.exports = {
   name: 'ember-adcssy',
-  included: function(app, parentAddon) {
-    this._super.included(app)
-    this.app = app
 
-    app.import('vendor/ember-adcssy/register-version.js')
-    app.import(app.bowerDirectory + '/adcssy/build/css/adcssy.css')
+  /**
+   * Set the default options for ember-cli-postcss if none are given by the
+   * application.
+   */
+  included(app) {
+    this._super.included.apply(this, arguments)
+
+    app.options.postcssOptions = Object.assign(
+      DEFAULT_POSTCSS_OPTIONS,
+      app.options.postcssOptions
+    )
   },
 
-  treeForPublic: function(inputTree) {
-    var trees = []
-
-    var adcssyAssets = funnel(this.app.bowerDirectory + '/adcssy/assets', {
-      srcDir: '/',
-      include: [ 'fonts/*', 'pictures/**/*' ],
+  /**
+   * Load the assets of font-awesome and adcssy into the default asset folder.
+   * We explicitly don't call the super function here so that the assets are
+   * not namespaced.
+   */
+  treeForPublic(tree) {
+    let adcssyAssets = new Funnel(`${adcssyPath}/assets`, {
       destDir: '/'
     })
 
-    var fontAwesome = funnel(this.app.bowerDirectory + '/font-awesome/fonts', {
+    let faFonts = new Funnel(`${faPath}/fonts`, {
       destDir: '/fonts'
     })
 
-    var adcssySourcemap = funnel(this.app.bowerDirectory + '/adcssy/build/css', {
-      destDir: '/assets',
-      include: [ 'adcssy.css.map' ]
-    })
+    return new Merge([adcssyAssets, faFonts, tree].filter(Boolean))
+  },
 
-    if (inputTree) {
-      trees.push(inputTree)
-    }
+  /**
+   * Load the styles of font-awesome and adcssy
+   */
+  treeForStyles(tree) {
+    let adcssyStyles = new Funnel(`${adcssyPath}/css`)
 
-    trees.push(adcssyAssets)
-    trees.push(fontAwesome)
-    trees.push(adcssySourcemap)
+    let faStyles = new Funnel(`${faPath}/css`)
 
-    return mergeTrees(trees)
+    let trees = new Merge([adcssyStyles, faStyles, tree].filter(Boolean))
+
+    return this._super.treeForStyles.call(this, trees)
   }
 }

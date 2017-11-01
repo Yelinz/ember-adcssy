@@ -3,17 +3,11 @@
   "version": "1.1.4",
   "description": "Ember addon for adcssy",
   "main": "index.js",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/adfinis-sygroup/ember-adcssy"
-  },
+  "repository": "https://github.com/adfinis-sygroup/ember-adcssy",
   "engines": {
-    "node": ">= 0.10.0"
+    "node": "^4.5 || 6.* || >= 7.*"
   },
-  "author": {
-    "name": "Damian Senn",
-    "email": "damian.senn@adfinis-sygroup.ch"
-  },
+  "author": "Adfinis SyGroup AG <info@adfinis-sygroup.ch>",
   "keywords": [
     "ember-addon",
     "css",
@@ -23,7 +17,13 @@
   ],
   "homepage": "https://github.com/adfinis-sygroup/ember-adcssy",
   "dependencies": {
+    "adcssy": "^0.10.0",
     "broccoli-funnel": "^0.2.8",
-    "broccoli-merge-trees": "^0.2.3"
+    "broccoli-merge-trees": "^0.2.3",
+    "ember-cli-postcss": "^3.5.2",
+    "font-awesome": "^4.7.0",
+    "postcss-cssnext": "^3.0.2",
+    "postcss-import": "^11.0.0",
+    "postcss-responsive-type": "^1.0.0"
   }
 }

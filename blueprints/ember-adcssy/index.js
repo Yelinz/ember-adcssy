@@ -1,10 +1,12 @@
 /* global module */
 
 module.exports = {
-  normalizeEntityName: function() { },
-
-  afterInstall: function() {
-    this.addBowerPackageToProject('adcssy', 'adfinis-sygroup/adcssy#master')
-    this.addBowerPackageToProject('font-awesome', '^4.7.0')
+  afterInstall() {
+    this.addAddonToProject('ember-cli-postcss')
+    this.addPackagesToProject([
+      { name: 'postcss-import' },
+      { name: 'postcss-cssnext' },
+      { name: 'postcss-responsive-type' }
+    ])
   }
 }
