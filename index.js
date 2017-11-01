@@ -1,44 +1,52 @@
 /* global module, require, __dirname */
 
-var funnel     = require('broccoli-funnel')
-var mergeTrees = require('broccoli-merge-trees')
+const postcss = require('broccoli-postcss-single')
+const Funnel = require('broccoli-funnel')
+const mergeTrees = require('broccoli-merge-trees')
+
+const fs = require('fs')
+const path = require('path')
+
+const adcssyPath = path.dirname(require.resolve('adcssy/package.json'))
+const faPath = path.dirname(require.resolve('font-awesome/package.json'))
 
 module.exports = {
   name: 'ember-adcssy',
-  included: function(app, parentAddon) {
-    this._super.included(app)
-    this.app = app
 
-    app.import('vendor/ember-adcssy/register-version.js')
-    app.import(app.bowerDirectory + '/adcssy/build/css/adcssy.css')
-  },
+  treeForPublic() {
+    let trees = []
 
-  treeForPublic: function(inputTree) {
-    var trees = []
-
-    var adcssyAssets = funnel(this.app.bowerDirectory + '/adcssy/assets', {
-      srcDir: '/',
-      include: [ 'fonts/*', 'pictures/**/*' ],
+    let adcssyAssets = new Funnel(`${adcssyPath}/assets/pictures`, {
       destDir: '/'
     })
 
-    var fontAwesome = funnel(this.app.bowerDirectory + '/font-awesome/fonts', {
+    let adcssyFonts = new Funnel(`${adcssyPath}/assets/fonts`, {
       destDir: '/fonts'
     })
 
-    var adcssySourcemap = funnel(this.app.bowerDirectory + '/adcssy/build/css', {
-      destDir: '/assets',
-      include: [ 'adcssy.css.map' ]
-    })
-
-    if (inputTree) {
-      trees.push(inputTree)
-    }
+    let faFonts = new Funnel(`${faPath}/fonts`, { destDir: '/fonts' })
 
     trees.push(adcssyAssets)
-    trees.push(fontAwesome)
-    trees.push(adcssySourcemap)
+    trees.push(adcssyFonts)
+    trees.push(faFonts)
 
-    return mergeTrees(trees)
+    return mergeTrees(trees, { overwrite: true })
+  },
+
+  treeForAddon() {
+    return postcss([`${adcssyPath}/css`], 'adcssy.css', 'adcssy.css', {
+      plugins: [
+        { module: require('postcss-import') },
+        {
+          module: require('postcss-cssnext'),
+          options: {
+            browsers: '> 2%, last 2 versions, Firefox ESR',
+            features: { rem: false }
+          }
+        },
+        { module: require('postcss-responsive-type') }
+      ],
+      map: { inline: true }
+    })
   }
 }

@@ -1,7 +1,7 @@
 # Ember AdCSSy
 
-Installation:
+## Installation
 
-```sh
+```bash
 ember install adfinis-sygroup/ember-adcssy
 ```
