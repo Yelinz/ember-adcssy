@@ -16,18 +16,13 @@ module.exports = {
   treeForPublic() {
     let trees = []
 
-    let adcssyAssets = new Funnel(`${adcssyPath}/assets/pictures`, {
+    let adcssyAssets = new Funnel(`${adcssyPath}/assets`, {
       destDir: '/'
-    })
-
-    let adcssyFonts = new Funnel(`${adcssyPath}/assets/fonts`, {
-      destDir: '/fonts'
     })
 
     let faFonts = new Funnel(`${faPath}/fonts`, { destDir: '/fonts' })
 
     trees.push(adcssyAssets)
-    trees.push(adcssyFonts)
     trees.push(faFonts)
 
     return mergeTrees(trees, { overwrite: true })
