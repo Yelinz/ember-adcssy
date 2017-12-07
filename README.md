@@ -1,5 +1,7 @@
 # Ember AdCSSy
 
+**WARNING: This project is deprecated and should not be used anymore. It is not maintained!**
+
 ## Installation
 
 ```bash
