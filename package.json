@@ -15,12 +15,13 @@
     "sygroup",
     "framework"
   ],
+  "license": "MIT",
   "homepage": "https://github.com/adfinis-sygroup/ember-adcssy",
   "dependencies": {
     "adcssy": "^0.10.0",
-    "broccoli-funnel": "^0.2.8",
-    "broccoli-merge-trees": "^0.2.3",
-    "ember-cli-postcss": "^3.5.2",
+    "broccoli-funnel": "^2.0.1",
+    "broccoli-merge-trees": "^3.0.0",
+    "ember-cli-postcss": "^4.0.0",
     "font-awesome": "^4.7.0",
     "postcss-cssnext": "^3.0.2",
     "postcss-import": "^11.0.0",
