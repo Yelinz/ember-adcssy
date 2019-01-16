@@ -15,7 +15,7 @@ const DEFAULT_POSTCSS_OPTIONS = {
     enable: true,
     plugins: [
       { module: require('postcss-import') },
-      { module: require('postcss-cssnext') },
+      { module: require('postcss-preset-env') },
       { module: require('postcss-responsive-type') }
     ]
   }
